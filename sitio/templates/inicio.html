@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        h3 {
+            background-color: blue;
+        }
+
+        .texto-poco-importante {
+            color: grey;
+        }
+
+        #titulo-principal {
+            font-family: verdana;
+        }
+
+        #lista-noticias h3 {
+            font-family: verdana;
+        }
+    </style>
+
+</head>
+
+<body>
+<h1 id="titulo-principal">Noticias.com</h1>
+<p>bienvenido!</p>
+
+<h3>Otro titulo secundario</h3>
+
+<div id="lista-noticias">
+{% for noticia in lista_noticias %}
+    <h3 class="titulo-noticia">{{ noticia.fecha }} {{ noticia.titulo }}</h3>
+    <p class="texto-poco-importante">{{ noticia.texto }}</p>
+{% endfor %}
+</div>
+
+<div id="footer">
+    <p class="texto-poco-importante">Gracias por haber leido noticias en <strong>Noticias.com</strong></p>
+    <p>Hiciste click en <span id="en-que-hiciste-click">?</span></p>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+<script>
+    function clickANoticia() {
+        var cantidad = 0;
+
+        for (var i=10; i<50; i++) {
+            cantidad += i;
+        }
+
+        alert("el resultado es:" + cantidad.toString());
+
+        $("#en-que-hiciste-click").html("una noticia!");
+    }
+
+    $(".titulo-noticia").on("click", clickANoticia);
+</script>
+
+
+</body>
+</html>
