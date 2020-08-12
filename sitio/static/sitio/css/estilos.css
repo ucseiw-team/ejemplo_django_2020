@@ -1,0 +1,16 @@
+h3 {
+    background-color: blue;
+}
+
+.texto-poco-importante {
+    color: grey;
+}
+
+#titulo-principal {
+    font-family: verdana;
+}
+
+#lista-noticias h3 {
+    font-family: verdana;
+}
+

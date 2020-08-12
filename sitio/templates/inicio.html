@@ -1,31 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
 <head>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        h3 {
-            background-color: blue;
-        }
-
-        .texto-poco-importante {
-            color: grey;
-        }
-
-        #titulo-principal {
-            font-family: verdana;
-        }
-
-        #lista-noticias h3 {
-            font-family: verdana;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'sitio/css/estilos.css' %}">
 
 </head>
 
 <body>
 <h1 id="titulo-principal">Noticias.com</h1>
+<img src="{% static 'sitio/imagenes/logo.png' %}" />
 <p>bienvenido!</p>
 
 <h3>Otro titulo secundario</h3>
