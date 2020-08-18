@@ -1,6 +1,9 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from sitio.models import Noticia
 from datetime import datetime
+
+from sitio.forms import CargaDatosPersonales
 
 
 
@@ -15,3 +18,34 @@ def inicio(request):
     return render(request, 'inicio.html', {'lista_noticias': noticias})
 
 
+def ejemplo_form(request):
+    if request.method == 'POST':
+        # el usuario está mandando sus datos
+        nombre_apellido = request.POST['nombre_apellido']
+        edad = request.POST['edad']
+    else:
+        # el usuario está entrando a la página a ver el form
+        nombre_apellido = '(todavía no se mandó)'
+        edad = '(todavía no se mandó)'
+
+    return render(request, "ejemplo_form.html", {
+        'nombre_apellido': nombre_apellido,
+        'edad': edad,
+    })
+
+
+def ejemplo_form_copado(request):
+    if request.method == 'POST':
+        # el usuario está mandando sus datos
+        form_datos = CargaDatosPersonales(request.POST)
+
+        if form_datos.is_valid():
+            nombre_apellido = form_datos.cleaned_data['nombre_apellido']
+            edad = form_datos.cleaned_data['edad']
+            print("datos ingresados:", nombre_apellido, edad)
+
+            return HttpResponseRedirect('/inicio')
+    else:
+        form_datos = CargaDatosPersonales()
+
+    return render(request, "ejemplo_form_copado.html", {'form_datos': form_datos})

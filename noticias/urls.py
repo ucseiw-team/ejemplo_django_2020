@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from sitio.views import inicio
+from sitio.views import inicio, ejemplo_form, ejemplo_form_copado
 
 
 urlpatterns = [
     path('inicio/', inicio),
+    path('ejemplo_form/', ejemplo_form),
+    path('ejemplo_form_copado/', ejemplo_form_copado),
     path('admin/', admin.site.urls),
 ]
