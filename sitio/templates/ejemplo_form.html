@@ -1,5 +1,8 @@
-<h1>Ejemplo de form</h1>
+{% extends "base.html" %}
 
+{% block nombre_seccion %}Ejemplo de form{% endblock %}
+
+{% block contenido %}
 <form action="." method="post">
     {% csrf_token %}
     <input name="nombre_apellido" type="text" />
@@ -9,7 +12,12 @@
 </form>
 
 
+{% include "publicidad_albion.html" %}
+
+
 <h3>Data recibida:</h3>
 
-<p>Nombre: {{ nombre_apellido }} </p>
+<p>Nombre: {{ nombre_apellido|upper }} </p>
 <p>Edad: {{ edad }} </p>
+
+{% endblock %}
