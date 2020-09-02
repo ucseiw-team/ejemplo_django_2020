@@ -1,6 +1,8 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
+from sitio.models import FotoNoticia
+
 
 class CargaDatosPersonales(forms.Form):
     nombre_apellido = forms.CharField(max_length=200)
@@ -13,3 +15,9 @@ class CargaDatosPersonales(forms.Form):
             raise ValidationError("Solo fisa puede cargar sus datos")
 
         return nombre_apellido
+
+
+class FormFoto(forms.ModelForm):
+    class Meta:
+        model = FotoNoticia
+        fields = ('noticia', 'imagen')

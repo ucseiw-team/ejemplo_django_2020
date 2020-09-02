@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from sitio.views import (
     inicio, ejemplo_form, ejemplo_form_copado, ejemplo_ajax, publicidad_ajax,
-    cantidad_noticias_ajax
+    cantidad_noticias_ajax, subir_foto
 )
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -28,5 +31,6 @@ urlpatterns = [
     path('ejemplo_ajax/', ejemplo_ajax),
     path('ajax/publicidad/', publicidad_ajax),
     path('ajax/cantidad_noticias/', cantidad_noticias_ajax),
+    path('subir_foto/', subir_foto),
     path('admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,15 @@
+<h1>Subir noticia</h1>
+
+<form action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form_foto.as_p }}
+
+    <input type="submit" value="Guardar" />
+</form>
+
+<h2>Fotos subidas:</h2>
+
+{% for foto in fotos_noticias %}
+    <p>{{ foto.noticia.titulo }}</p>
+    <img src="{{ foto.imagen.url }}" />
+{% endfor %}

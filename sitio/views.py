@@ -1,9 +1,9 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
-from sitio.models import Noticia
+from sitio.models import Noticia, FotoNoticia
 from datetime import datetime
 
-from sitio.forms import CargaDatosPersonales
+from sitio.forms import CargaDatosPersonales, FormFoto
 
 
 
@@ -66,3 +66,21 @@ def cantidad_noticias_ajax(request):
     }
 
     return JsonResponse(datos)
+
+
+def subir_foto(request):
+    if request.method == 'POST':
+        # el usuario está mandando sus datos
+        form_foto = FormFoto(request.POST, request.FILES)
+
+        if form_foto.is_valid():
+            form_foto.save()
+            return HttpResponseRedirect('/inicio')
+    else:
+        form_foto = FormFoto()
+
+    fotos = FotoNoticia.objects.all()
+
+    return render(request, "subir_foto.html", {'form_foto': form_foto, 'fotos_noticias': fotos})
+
+
