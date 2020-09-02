@@ -1,0 +1,9 @@
+{
+    "nombre": "Fisa",
+    "edad": 33,
+    "gustos": [
+        "espadas",
+        "python",
+        "choripan"
+    ]
+}

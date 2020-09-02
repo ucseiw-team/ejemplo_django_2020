@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from sitio.models import Noticia
 from datetime import datetime
@@ -49,3 +49,20 @@ def ejemplo_form_copado(request):
         form_datos = CargaDatosPersonales()
 
     return render(request, "ejemplo_form_copado.html", {'form_datos': form_datos})
+
+
+def ejemplo_ajax(request):
+    return render(request, "ejemplo_ajax.html", {})
+
+
+def publicidad_ajax(request):
+    return render(request, "publicidad_ajax.html")
+
+
+def cantidad_noticias_ajax(request):
+    datos = {
+        "cantidad_total": Noticia.objects.all().count(),
+        "hay_archivadas": Noticia.objects.filter(archivada=True).exists()
+    }
+
+    return JsonResponse(datos)
