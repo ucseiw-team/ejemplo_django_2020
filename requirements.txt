@@ -2,3 +2,9 @@ django==3.1
 django-heroku
 gunicorn
 pillow
+whoosh
+# django-haystack  # cuando hagan el release que anda con django 3.0.
+# Mientras:
+git+https://github.com/django-haystack/django-haystack.git@08dd9471a0137ba87b8145cf1ec5ff9d8d498a2e
+elasticsearch
+certifi
