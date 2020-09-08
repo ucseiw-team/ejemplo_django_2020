@@ -1,0 +1,7 @@
+{{ object.titulo }}
+
+{{ object.texto }}
+
+{{ object.categoria.nombre }}
+
+{{ object.fecha }}
