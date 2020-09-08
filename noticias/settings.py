@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'haystack',
     'sitio',
 ]
 
@@ -81,6 +82,25 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+if os.environ.get('SEARCHBOX_URL'):
+    # estoy corriendo en heroku
+    HAYSTACK_CONNECTIONS = {
+        'default': {
+            'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+            'URL': os.environ.get('SEARCHBOX_URL'),
+            'INDEX_NAME': 'documents',
+        },
+    }
+else:
+    # estoy corriendo en mi maquina (o en heroku y me olvide de agregar
+    # el addon de searchbox)
+    HAYSTACK_CONNECTIONS = {
+        'default': {
+            'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+            'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+        },
+    }
 
 
 # Password validation

@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from sitio.views import (
     inicio, ejemplo_form, ejemplo_form_copado, ejemplo_ajax, publicidad_ajax,
     cantidad_noticias_ajax, subir_foto
@@ -33,4 +33,5 @@ urlpatterns = [
     path('ajax/cantidad_noticias/', cantidad_noticias_ajax),
     path('subir_foto/', subir_foto),
     path('admin/', admin.site.urls),
+    path('search/', include('haystack.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
