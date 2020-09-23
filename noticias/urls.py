@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from sitio.views import (
     inicio, ejemplo_form, ejemplo_form_copado, ejemplo_ajax, publicidad_ajax,
-    cantidad_noticias_ajax, subir_foto
+    cantidad_noticias_ajax, subir_foto, ejemplo_refresco_automatico
 )
 
 from django.conf import settings
@@ -28,6 +28,7 @@ urlpatterns = [
     path('inicio/', inicio),
     path('ejemplo_form/', ejemplo_form),
     path('ejemplo_form_copado/', ejemplo_form_copado),
+    path('ejemplo_refresco_automatico/', ejemplo_refresco_automatico),
     path('ejemplo_ajax/', ejemplo_ajax),
     path('ajax/publicidad/', publicidad_ajax),
     path('ajax/cantidad_noticias/', cantidad_noticias_ajax),

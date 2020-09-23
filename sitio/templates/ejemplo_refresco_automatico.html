@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <p>Se llamó <span id="cantidad">0</span> veces a la función</p>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script>
+        var cantidad = 0;
+        function actualizarCantidad() {
+            cantidad += 1;
+            $('#cantidad').html(cantidad);
+        }
+
+        window.setInterval(actualizarCantidad, 500);
+
+    </script>
+
+{% endblock %}
+
+

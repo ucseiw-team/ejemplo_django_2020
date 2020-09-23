@@ -84,3 +84,5 @@ def subir_foto(request):
     return render(request, "subir_foto.html", {'form_foto': form_foto, 'fotos_noticias': fotos})
 
 
+def ejemplo_refresco_automatico(request):
+    return render(request, "ejemplo_refresco_automatico.html", {})
